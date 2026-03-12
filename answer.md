@@ -276,6 +276,7 @@ spec:
 
 3. Создаем Ingress для обеспечения доступа снаружи кластера
 
+```
 # ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -301,9 +302,11 @@ spec:
   - hosts:
     - my-app.example.com
     secretName: my-app-tls
+```
 
 4. Создаем HPA для автоматического масштабирования
 
+```
 # hpa.yaml
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -329,9 +332,11 @@ spec:
       target:
         type: Utilization
         averageUtilization: 80
+```
 
 5. Создаем ConfigMap 
 
+```
 # configmap.yaml
 apiVersion: v1
 kind: ConfigMap
@@ -347,6 +352,7 @@ data:
         index index.html index.htm;
       }
     }
+```
 
 6. Развертывание
 
@@ -426,3 +432,5 @@ data:
 - временно увеличить ресурсы системы
 
 Если проблему не удается решить самостоятельно, я соберу информацию о текущем состоянии системы, сообщу о проблеме и выполненных действиях своему руководителю или старшему инженеру и передам всю собранную информацию для дальнейшего анализа
+
+😎
