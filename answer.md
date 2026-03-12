@@ -197,6 +197,7 @@ docker run -d -p 8080:80 --name my-app my-app-image
 
 1. Создаем Deployment для управления подами и обеспечения отказоустойчивости
 
+```
 # deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -249,9 +250,11 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
+```
 
 2. Создаем Service для доступа к приложению внутри или снаружи кластера
 
+```
 # service.yaml
 apiVersion: v1
 kind: Service
@@ -268,6 +271,8 @@ spec:
     protocol: TCP
     name: http
   type: ClusterIP
+
+```
 
 3. Создаем Ingress для обеспечения доступа снаружи кластера
 
