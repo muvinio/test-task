@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  app:
+    build: ./app
+    expose:
+      - "3000"
+
+  nginx1:
+    image: nginx:1.25-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx1.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
+    restart: unless-stopped
+
+  nginx2:
+    image: nginx:1.25-alpine
+    ports:
+      - "81:80"
+    volumes:
+      - ./nginx/nginx2.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
+    restart: unless-stopped
+
+  nginx3:
+    image: nginx:1.25-alpine
+    ports:
+      - "82:80"
+    volumes:
+      - ./nginx/nginx3.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
+    restart: unless-stopped
