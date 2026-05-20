@@ -50,7 +50,7 @@ client
 
 ### 1. Клонировать репозиторий
 
-git clone <repo-url>
+git clone /<repo-url/>
 cd <project>
 
 2. Запустить стенд
