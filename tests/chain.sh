@@ -15,7 +15,7 @@ run_test() {
 
 echo -e "\n${MAGENTA}=== CHAIN TESTS (цепочки прокси) ===${NC}"
 
-# Цепочки из двух прокси (ожидаем 3 IP: пользователь, nginxX, nginxY)
+# Цепочки из двух прокси (3 IP)
 run_test "nginx1→nginx2→app" "http://${BASE_HOST}:80/nginx2/app/" 3
 run_test "nginx1→nginx3→app" "http://${BASE_HOST}:80/nginx3/app/" 3
 run_test "nginx2→nginx1→app" "http://${BASE_HOST}:81/nginx1/app/" 3
@@ -23,7 +23,7 @@ run_test "nginx2→nginx3→app" "http://${BASE_HOST}:81/nginx3/app/" 3
 run_test "nginx3→nginx1→app" "http://${BASE_HOST}:82/nginx1/app/" 3
 run_test "nginx3→nginx2→app" "http://${BASE_HOST}:82/nginx2/app/" 3
 
-# Полные цепочки (ожидаем 4 IP)
+# Полные цепочки (4 IP)
 run_test "nginx1→nginx2→nginx3→app" "http://${BASE_HOST}:80/nginx2/nginx3/app/" 4
 run_test "nginx1→nginx3→nginx2→app" "http://${BASE_HOST}:80/nginx3/nginx2/app/" 4
 run_test "nginx2→nginx1→nginx3→app" "http://${BASE_HOST}:81/nginx1/nginx3/app/" 4

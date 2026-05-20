@@ -8,7 +8,6 @@ BASE_HOST="${BASE_HOST:-localhost}"
 
 run_test() {
     TOTAL=$((TOTAL+1))
-    # Теперь прямой запрос через один nginx должен дать 2 IP: пользователь и этот nginx
     if test_request "$1" "$2" 2; then
         PASSED=$((PASSED+1))
     fi

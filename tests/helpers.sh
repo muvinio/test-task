@@ -4,15 +4,22 @@
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
-YELLOW='\033[0;33m'
+YELLOW='\033[1;33m'
 MAGENTA='\033[0;35m'
 NC='\033[0m' # No Color
 
+# Проверка наличия curl
 if ! command -v curl &> /dev/null; then
     echo -e "${RED}Ошибка: curl не найден.${NC}"
     exit 1
 fi
 
+# Функция проверки одного теста
+# $1 - описание
+# $2 - URL
+# $3 - ожидаемое количество IP в X-Forwarded-For
+# $4 - дополнительные опции curl (например, заголовки)
+# $5 - IP, которого НЕ должно быть в цепочке (для spoofing)
 test_request() {
     local description="$1"
     local url="$2"
