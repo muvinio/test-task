@@ -6,8 +6,7 @@ services:
     expose:
       - "3000"
     networks:
-      proxy_net:
-        ipv4_address: 172.25.0.5
+      - proxy_net
 
   nginx1:
     image: nginx:1.25-alpine
@@ -18,8 +17,7 @@ services:
     depends_on:
       - app
     networks:
-      proxy_net:
-        ipv4_address: 172.25.0.2
+      - proxy_net
     restart: unless-stopped
 
   nginx2:
@@ -31,8 +29,7 @@ services:
     depends_on:
       - app
     networks:
-      proxy_net:
-        ipv4_address: 172.25.0.3
+      - proxy_net
     restart: unless-stopped
 
   nginx3:
@@ -44,13 +41,9 @@ services:
     depends_on:
       - app
     networks:
-      proxy_net:
-        ipv4_address: 172.25.0.4
+      - proxy_net
     restart: unless-stopped
 
 networks:
   proxy_net:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 172.25.0.0/24
