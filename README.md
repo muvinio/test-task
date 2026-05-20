@@ -50,8 +50,8 @@ client
 
 ### 1. Клонировать репозиторий
 
-git clone /<repo-url/>
-cd <project>
+git clone repo-url
+cd project
 
 2. Запустить стенд
 docker-compose up -d --build
@@ -79,62 +79,6 @@ Spoofing тесты (5 проверок)
 
 При успехе:
 ИТОГО: 20 / 20 тестов пройдено
-
-🌍 Переменные окружения
-
-Если стенд не на localhost:
-
-BASE_HOST=192.168.1.100 ./tests/run.sh
-🧪 Ручное тестирование (curl)
-
-⚠️ Windows: используйте curl.exe, а не curl
-
-1️⃣ Direct (один прокси → app)
-
-curl -s http://localhost/app/
-
-curl -s http://localhost:81/app/
-
-curl -s http://localhost:82/app/
-
-
-2️⃣ Chain (2 прокси)
-
-curl -s http://localhost/nginx2/app/
-
-curl -s http://localhost/nginx3/app/
-
-curl -s http://localhost:81/nginx1/app/
-
-curl -s http://localhost:81/nginx3/app/
-
-curl -s http://localhost:82/nginx1/app/
-
-curl -s http://localhost:82/nginx2/app/
-
-
-3️⃣ Chain (3 прокси)
-
-curl -s http://localhost/nginx2/nginx3/app/
-
-curl -s http://localhost/nginx3/nginx2/app/
-
-curl -s http://localhost:81/nginx1/nginx3/app/
-
-curl -s http://localhost:81/nginx3/nginx1/app/
-
-curl -s http://localhost:82/nginx1/nginx2/app/
-
-curl -s http://localhost:82/nginx2/nginx1/app/
-
-
-4️⃣ Spoofing (защита от подделки)
-
-curl -s -H "X-Forwarded-For: 1.2.3.4" http://localhost/app/
-
-curl -s -H "X-Forwarded-For: 1.2.3.4" http://localhost:81/app/
-
-curl -s -H "X-Forwarded-For: 1.2.3.4" http://localhost/nginx2/nginx3/app/
 
 
 ## 📦 Структура проекта
